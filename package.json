@@ -1,0 +1,35 @@
+{
+  "name": "rwu-yoda",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [
+    "rwu-yoda"
+  ],
+  "dependencies": {
+    "@angular-devkit/schematics": "^10.1.4",
+    "angular": "^1.8.0",
+    "angular-chart.js": "1.1.1",
+    "chart.js": "2.9.3",
+    "chartjs-color": "2.2.0",
+    "chartjs-color-string": "0.5.0",
+    "color-convert": "0.5.3",
+    "color-name": "1.1.3",
+    "moment": "2.22.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node angular-app.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
