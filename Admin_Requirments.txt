@@ -1,0 +1,29 @@
+Inclusive list of requirements and details for them:
+
+for Front End
+admin can add user/admin logins -- On web interface to manage login and management
+final website should be as close to sample site as possible, but doesnt need to be a carbon copy
+make angular happy on all the files
+the pages that are in now are pretty much the final set
+
+
+
+for database:
+Comma or tab separated (one or the other) can chose the format
+Program looks at shift to calc viability
+
+
+
+For deployment:
+Google cloud platform or aws
+
+
+
+Steps:
+put html files in the right spot
+get router to work with html files
+get the back end to send data to front end
+make front end pretty
+login credentials and what not
+
+
