@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-@Component({selector: 'ngbd-collapse-navbar', templateUrl: './collapse-navbar.html'})
+@Component({selector: 'ngbd-collapse-navbar', templateUrl: './index.html'})
 export class NgbdCollapseNavbar {
   // Step 1:
   // Create a property to track whether the menu is open.
