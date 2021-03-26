@@ -18,6 +18,7 @@ angular.module("MyApp").directive('ngFileModel', ['$parse', function ($parse) {
                         // File Input Value
                         _file: item
                     };
+                    //console.log(value)
                     values.push(value);
                 });
                 scope.$apply(function () {
