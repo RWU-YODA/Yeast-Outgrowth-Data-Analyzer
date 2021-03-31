@@ -45,7 +45,7 @@ function config($routeProvider)
     })
     .when("/compare",{
       templateUrl: '../static/partials/compare.html',
-      controller: "StrainListController",
+      controller: "CompareController",
       controllerAs: "vm"
     });
 }
