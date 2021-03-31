@@ -42,5 +42,10 @@ function config($routeProvider)
       templateUrl:"../static/partials/instructions.html",
       controller: "InstructionController",
       controllerAs: "vm"
+    })
+    .when("/compare",{
+      templateUrl: '../static/partials/compare.html',
+      controller: "StrainListController",
+      controllerAs: "vm"
     });
 }
