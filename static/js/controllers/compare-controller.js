@@ -1,6 +1,10 @@
-angular.module("MyApp").controller("CompareController", CompareController);
+angular.module("MyApp").controller("CompareController", CompareController)
 
 function CompareController($scope,$log,indStrainService, strainDataFactory){
+  
+  $log.info("COMPARE CONTROLLER ACTIVE")
+  console.log("COMPARE CONTROLLER ACTIVE")
+  
   // Information for the actual yeast data display and
   // meta information.
   $scope.strainName = indStrainService.strainName;
@@ -13,7 +17,6 @@ function CompareController($scope,$log,indStrainService, strainDataFactory){
 
   $log.info($scope.days);
   $log.info($scope.survivalValues);
-
   // The date
   $scope.date = new Date();
 

@@ -20,6 +20,7 @@ angular.module("MyApp").directive('ngFileModel', ['$parse', function ($parse) {
                     };
                     values.push(value);
                 });
+                console.log(values)
                 scope.$apply(function () {
                     if (isMultiple) {
                         modelSetter(scope, values);
