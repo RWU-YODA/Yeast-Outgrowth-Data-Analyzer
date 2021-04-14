@@ -153,11 +153,9 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
     alert("Uploaded " + $scope.files.length + " documents.");
     //console.log($scope.odt);
 
+    // console.log($scope.expname, $scope.researcher, $scope.institution, vm.days,$scope.exdes);
     strainDataFactory.processData($scope.files, vm.strainNames, vm.days, $scope.odt);
-    //console.log("ODT and stuff")
-    //console.log($scope.odt);
-    //console.log($scope.expname, $scope.researcher, $scope.institution, vm.days,$scope.exdes);
-
+    console.log($scope.odt);
     // Upload the information to a factory service which can be used to temporarily save the data
     // as this is not automatically updated by the digest loop.
     expInfoFactory.setData($scope.expname, $scope.researcher, $scope.institution,vm.days, $scope.exdes)

@@ -39,8 +39,12 @@ class Experiment:
     def generateGroupedSurvivalMatrix(self,nameList,dayNameList,ODT):
         # Generate the standard survivalMatrix for each well.
         wellSurvivalMatrix = self.generateWellSurivalMatrix(ODT)
+        print("FSJKNFBKJSN generateGroupedSurvivalMatrix")
+        print(dayNameList)
+        print(nameList)
+        #testList = [2,4]
         # Rename the rows with the appropriate days
-        groupedSurvivalMatrix = wellSurvivalMatrix.rename(index= lambda x:  dayNameList[x] )
+        groupedSurvivalMatrix = wellSurvivalMatrix#.rename(index= lambda x:  dayNameList[x] )
         # Rename the columns with the names of the strains
         groupedSurvivalMatrix.columns = nameList
 
@@ -49,10 +53,13 @@ class Experiment:
         return averagedOutput
 
     def generateGroupedSurvivalMatrixSDs(self,nameList,dayNameList,ODT):
+        print("FSJKNFBKJSN generateGroupedSurvivalMatrixSDs")
+        print(dayNameList)
+        print(nameList)
         # Generate the standard survivalMatrix for each well.
         wellSurvivalMatrix = self.generateWellSurvivalMatrix(ODT)
         # Rename the rows with the appropriate days
-        groupedSurvivalMatrix = wellSurvivalMatrix.rename(index= lambda x:  dayNameList[x] )
+        groupedSurvivalMatrix = wellSurvivalMatrix#.rename(index= lambda x:  dayNameList[x] )
         # Rename the columns with the names of the strains
         groupedSurvivalMatrix.columns = nameList
 
