@@ -66,7 +66,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
       }
     }
 
-    //vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
+    vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
   });
 
   $scope.$watch("repoNumber", function(){
@@ -113,7 +113,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
       }
     }
 
-    //vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
+    vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
   });
 
   // A helper function which eliminates empty "" strings form the strainDesc object, allowing for
@@ -153,10 +153,9 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
     alert("Uploaded " + $scope.files.length + " documents.");
     console.log($scope.odt);
 
+    // console.log($scope.expname, $scope.researcher, $scope.institution, vm.days,$scope.exdes);
     strainDataFactory.processData($scope.files, vm.strainNames, vm.days, $scope.odt);
     console.log($scope.odt);
-    // console.log($scope.expname, $scope.researcher, $scope.institution, vm.days,$scope.exdes);
-
     // Upload the information to a factory service which can be used to temporarily save the data
     // as this is not automatically updated by the digest loop.
     expInfoFactory.setData($scope.expname, $scope.researcher, $scope.institution,vm.days, $scope.exdes)

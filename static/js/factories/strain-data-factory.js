@@ -52,7 +52,7 @@ function strainDataFactory($http)
         }
       })
       .then(function (response) {
-        console.log( response);
+        console.log(response);
         processedData.push(response);
       })
       .catch(function (response, status) {

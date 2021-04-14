@@ -65,7 +65,11 @@ class DayData:
 
         lm = LinearRegression()
         lm.fit(odRange, timeRange)
-        timePrediction = lm.predict(np.log(ODT))
+        #ax = df.plot(x=feature, y=target, kind='scatter', alpha=0.5, logy=True)
+        #X = df[[feature]]
+        #y = np.log(df[target]) # Apply natural log function to the target
+        #y_pred = np.exp(model.predict(X)) # Apply exponential function (inverse of natural log) to the predictions
+        timePrediction = lm.predict(odRange)
         timePrediction = timePrediction.transpose()
         return timePrediction
 
