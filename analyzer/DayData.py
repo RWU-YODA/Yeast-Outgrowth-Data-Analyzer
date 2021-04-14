@@ -65,12 +65,10 @@ class DayData:
 
         lm = LinearRegression()
         lm.fit(odRange, timeRange)
-        #print("***********************************")
-        #print(np.log(ODT))
+
         #timePrediction = lm.predict(np.log(ODT))
-        #timePrediction = timePrediction.transpose()
-        
-        timePrediction = [1.2,1.2,1.2,1.2,1.2,1.2]
+        timePrediction = lm.predict(odRange)
+        timePrediction = timePrediction.transpose()
         return timePrediction
 
     @classmethod

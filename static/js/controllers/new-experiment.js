@@ -66,7 +66,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
       }
     }
 
-    //vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
+    vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
   });
 
   $scope.$watch("repoNumber", function(){
@@ -113,7 +113,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
       }
     }
 
-    //vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
+    vm.strainNames = configurationString.replace(/\s/g, "").slice(0, -1).toUpperCase();
   });
 
   // A helper function which eliminates empty "" strings form the strainDesc object, allowing for
