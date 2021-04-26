@@ -155,7 +155,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
 
     // console.log($scope.expname, $scope.researcher, $scope.institution, vm.days,$scope.exdes);
     strainDataFactory.processData($scope.files, vm.strainNames, vm.days, $scope.odt);
-    console.log($scope.odt);
+    //console.log($scope.odt);
     // Upload the information to a factory service which can be used to temporarily save the data
     // as this is not automatically updated by the digest loop.
     expInfoFactory.setData($scope.expname, $scope.researcher, $scope.institution,vm.days, $scope.exdes)
@@ -165,7 +165,7 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
 
   // Redirects the application to the ouput page after data has been submitted for processing
   $scope.getData = function() {
-    console.log("WE ARE IN THE FUNCTION")
+    //console.log("WE ARE IN THE FUNCTION")
     console.log(strainDataFactory.processedData[0].data);
     $location.path("/output")
   };

@@ -34,6 +34,7 @@ class Experiment:
         survivalMatrix = thresholdMatrixDT.apply(Experiment.computeSurvivalValues)
 
         survivalMatrix.drop(survivalMatrix.tail(1).index,inplace=True)
+        #print(survivalMatrix)
         return survivalMatrix
 
     def generateGroupedSurvivalMatrix(self,nameList,dayNameList,ODT):

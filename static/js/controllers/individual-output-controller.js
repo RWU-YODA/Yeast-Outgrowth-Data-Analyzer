@@ -1,6 +1,9 @@
 angular.module("MyApp").controller("IndividualOutputController", IndividualOutputController);
 
 function IndividualOutputController($scope,$log,indStrainService, strainDataFactory){
+  //added
+  console.log("Individual Ouput Controller")
+  
   // Information for the actual yeast data display and
   // meta information.
   $scope.strainName = indStrainService.strainName;
