@@ -1,6 +1,6 @@
 angular.module("MyApp").controller("OutputController", OutputController);
 
-function exportToCsv(filename, rows) {
+function exportToCsv(filename, rows, numDays) {
   var processRow = function (row) {
     var finalVal = '';
     for (var j = 0; j < row.length; j++) {
@@ -20,7 +20,9 @@ function exportToCsv(filename, rows) {
 
   var csvFile = '';
   for (var i = 0; i < rows.length; i++) {
-    csvFile += processRow(rows[i]);
+    //console.log(processRow(rows[i]))
+    csvFile += processRow(rows[i].slice(0, numDays.length));
+    //csvFile += processRow(rows[i]);
   }
 
   var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
@@ -93,7 +95,7 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
     .appendChild(s);
 
   document.getElementById('downloadCSV').onclick = function () {
-    exportToCsv(($scope.exp.researcher[0] + ".csv"), $scope.displayData);
+    exportToCsv(($scope.exp.researcher[0] + ".csv"), $scope.displayData, $scope.exp.days[0].split(","));
 
   }
 
