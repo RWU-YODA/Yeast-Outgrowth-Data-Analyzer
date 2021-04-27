@@ -5,13 +5,13 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
   $scope.exp = expInfoFactory;
   
   // added
-  console.log("Output Controller")
+  //console.log("Output Controller")
 
   var numDays = $scope.exp.days[0].split(",")
-  console.log("NUMDAYS")
-  console.log(numDays)      //this gives us the needed index to cut off uneeded values
-  console.log("SurvivalValues")
-  console.log($scope.data.SurvivalValues) //undefined?
+  //console.log("NUMDAYS")
+  //console.log(numDays)      //this gives us the needed index to cut off uneeded values
+  //console.log("SurvivalValues")
+  //console.log($scope.data.SurvivalValues) //undefined?
 
   //origional
   var series = [];
@@ -26,7 +26,7 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
   
 
   //slice data and pray it doesnt break more stuff
-  console.log("FOR LOOP")
+  //console.log("FOR LOOP")
   for (var i = 0; i < $scope.data.length; i++) {
     //console.log($scope.data[i].SurvivalValues.slice(0,numDays.length))
     $scope.data[i].SurvivalValues = $scope.data[i].SurvivalValues.slice(0,numDays.length)
@@ -91,5 +91,10 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
         position: "top"
       }
     };
+
+    //link to stackoverflow download options
+    //https://stackoverflow.com/questions/42760332/download-a-file-from-server-and-giving-filename-in-angularjs
+    //stackoverflow
+
 
 }
