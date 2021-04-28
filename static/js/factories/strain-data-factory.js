@@ -52,11 +52,15 @@ function strainDataFactory($http)
         }
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response);        //this response is http 200 when good data is uploaded
+        var message = ('Upload Status: ' + response.status + ': ' + response.statusText)
+        window.alert(message)
         processedData.push(response);
       })
       .catch(function (response, status) {
-        console.log(response);
+        console.log(response);        //this would then have to be any other code that is sent
+        var message = ('Upload Status: ' + response.status + ': ' + response.statusText)
+        window.alert(message)
       });
 
   }
