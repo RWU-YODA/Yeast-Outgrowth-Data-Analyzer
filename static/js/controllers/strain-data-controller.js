@@ -2,31 +2,15 @@ angular.module("MyApp").controller("StrainDataController",StrainDataController)
 
 
 //attempt to add download button
-function exportToCsv(filename, rows, Days) {
-  var processRow = function (row) {
-    var finalVal = '';
-    for (var j = 0; j < row.length; j++) {
-      var innerValue = row[j] === null ? '' : row[j].toString();
-      if (row[j] instanceof Date) {
-        innerValue = row[j].toLocaleString();
-      };
-      var result = innerValue.replace(/"/g, '""');
-      if (result.search(/("|,|\n)/g) >= 0)
-        result = '"' + result + '"';
-      if (j > 0)
-        finalVal += ',';
-      finalVal += result;
-    }
-    return finalVal + '\n';
-  };
+function exportToCsv_single(filename, rows, Days) {
 
   var csvFile = '';
-  for (var i = 0; i < rows.length; i++) {
-    //console.log(processRow(rows[i]))
-    csvFile += processRow(rows[i].slice(0, Days.length));
-    //csvFile += processRow(rows[i]);
-  }
+  csvFile += ("," + Days + "\n")
+  csvFile += filename + "," 
+  csvFile += rows
 
+  filename = filename + ".csv"
+  
   var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
   if (navigator.msSaveBlob) { // IE 10+
     navigator.msSaveBlob(blob, filename);
@@ -56,10 +40,17 @@ function StrainDataController(strainDataFactory, $routeParams){
   // Acquiring the data related to this specific yeast strain.
   strainDataFactory.strainDisplay(id).then(function(response){
     // Setting the response to get the strain in question.
+
     vm.strain = response.data;
+    //console.log(vm.strain)
+    //console.log(response.data)
     vm.timePoints = vm.strain.days;
+    //console.log(vm.timePoints)
+    //console.log(vm.strain.days)
     vm.survivalValues = vm.strain.survivalValues;
+    //console.log(vm.survivalValues)
     vm.series = [vm.strain.name];
+    //console.log(vm.series)
     // vm.survivalIntegral = _computeSI(vm.timePoints, vm.survivalValues);
     vm.options =
       {
@@ -79,6 +70,13 @@ function StrainDataController(strainDataFactory, $routeParams){
         };
       });
 
+    //console.log("VM")
+    //console.log(vm)
+    //console.log("VM Data")
+    //console.log(vm.survivalValues)
+    //console.log(vm.timePoints)
+    //console.log(vm.strain.experimentor)
+
 
     // create a download button 
     var s = document.createElement("button");
@@ -93,7 +91,7 @@ function StrainDataController(strainDataFactory, $routeParams){
       .appendChild(s);
 
     document.getElementById('downloadCSV').onclick = function () {
-      exportToCsv(($scope.exp.researcher[0] + ".csv"), $scope.displayData, $scope.exp.days[0].split(","));
+      exportToCsv_single(vm.strain.name, vm.survivalValues, vm.timePoints);
 
   }
 }
