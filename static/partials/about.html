@@ -3,8 +3,12 @@
   <h1> About </h1>
   <h3 class= "lead"> The <strong>Y</strong>east <strong>O</strong>utgrowh <strong>D</strong>ata <strong>A</strong>nalyzer</h3>
 
-  <p> This program analyzes growth curves, computing doubling times and relative survivals on a sequence of outgrowth curves. The data is exported in a format for easy plotting in Excel (or other spreadsheet programs). The program can also output average values and standard deviations for a group of curves.
-  </p>
-
-
+  <p>The Yeast Outgrowth Data Analyzer (YODA) bioinformatic tool calculates relative viability of yeast strains using outgrowth curves.<sup>1</sup> Outgrowth curves can be generated using one of several commercially available robotic incubator/shaker/plate readers, by recording optical density at A600 (OD<sub>A600</sub>) of yeast growth over a 24-hour period. Relative viability is calculated based on the time-shift at which the outgrowth curve reaches a determined OD<sub>A600</sub> using the formula outlined in the below figure, where <strong>v<sub>n</sub></strong> is the relative viability, <strong>&#8710t<sub>n</sub></strong> is the shift in time (in minutes) between the reference and experimental strain, and <strong>&#8706</strong> is the doubling time of the strain (calculated as the maximal slope of the semi-log plot of OD<sub>A600</sub> as a function of time). The YODA tool is useful for assaying the chronological life span of yeast<sup>2</sup>, as well as the relative viability of strains following drug treatment (e.g., stress resistance). We and others have used OD<sub>A600</sub> set to 0.2 to calculate <strong>&#8710t<sub>n</sub></strong>, but the tool is flexible to allow users to change this value based on their own experimental set up. </p>
+  <img src="/static/img/image001.png" alt="Graph of 2 yeast strains" width="40%" height="30%"></img>
+  <p>Questions regarding the use of YODA can be directed to Christopher Burtner (cburtner@rwu.edu).</p>
+  <h3>References</h3>
+  <ol>
+    <li>Olsen B, Murakami CJ, Kaeberlein M. YODA: Software to facilitate high-throughput analysis of chronological life span, growth rate, and survival in budding yeast. BMS Bioinformatics. 2010 Mar 18;11:141</li>
+    <li>Murakami, CJ, Burtner, CR, Kennedy, BK, Kaeberlein, M. A method for high-throughput quantitative analysis of yeast chronological life span. J Gerontol A Biol Sci Med Sci. 2008 Feb;63(2): 113 - 121.</li>
+  </ol>
 </section>

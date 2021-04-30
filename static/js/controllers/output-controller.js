@@ -51,24 +51,23 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
   $scope.data = strainDataFactory.processedData[0].data.SurvivalOutput;
   $scope.exp = expInfoFactory;
 
-  // added
-  var numDays = $scope.exp.days[0].split(",")
-
-
   //origional
   var series = [];
   //this for loop is for graphing data
-  for (var i = 0; i < $scope.data.length; i++)     //$scope.data.length is the number of unique strains
-  {
+  for (var i = 0; i < $scope.data.length; i++) {     //$scope.data.length is the number of unique strains
     series.push($scope.data[i].SurvivalValues);
+  }       
+  //console.log("Series")
+  //console.log(series);
+  
+  // take every odd index from series[i]. they are just doubled up for whatever reason
+  for (var i = 0; i < series.length; i++) {
+    for (var j = 0; j < 12; j++) {
+      series[i].splice(j + 1, 1)
+    }
   }
-  console.log(series);
-
-
-  //slice data and pray it doesnt break more stuff
-  for (var i = 0; i < $scope.data.length; i++) {
-    $scope.data[i].SurvivalValues = $scope.data[i].SurvivalValues.slice(0, numDays.length)
-  }
+  //console.log("Series")
+  //console.log(series);
 
   $scope.displayData = series;
   //$scope.displayData is the array that holds all the strain info for each strain
@@ -97,7 +96,7 @@ function OutputController($scope, $log, $location, strainDataFactory, expInfoFac
   }
   $scope.series = names;
 
-  console.log(names);
+  //console.log(names);
 
   var dayWords = $scope.exp.days[0].split(",")
   $scope.daysCleaned = [];
