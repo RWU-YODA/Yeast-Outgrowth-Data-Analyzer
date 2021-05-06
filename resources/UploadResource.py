@@ -27,7 +27,6 @@ class UploadResource(Resource):
 
             # Getting the custom OD time threshold
             ODT = float(request.form["odt"])
-            print(ODT)
             # STRAIN OUTLINE:
             colNames = request.form["layout"].split(",")
             days = [int(day) for day in request.form["days"].split(",")]

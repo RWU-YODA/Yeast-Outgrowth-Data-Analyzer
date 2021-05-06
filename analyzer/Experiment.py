@@ -8,14 +8,18 @@ class Experiment:
     def __init__(self, dayList):
         # dayList is an array of DayData objects
         self.dayList = dayList
+        #print("Daylist: ", self.dayList)
 
     def calculateThresholdMatrix(self,ODT):
         # Get the names of the wells
         names = list(self.dayList[0].getThresholdTimes(ODT))
         # Create a list of all the threshold times. Note this is a numpy array
         thresholdList = [day.getThresholdTimes(ODT).values for day in self.dayList]
+        #print("ThresholdList: ", thresholdList)
         # Return a new pandas dataframe with the names
-        return pd.DataFrame(np.concatenate(thresholdList),columns=names)
+        threshold_df = pd.DataFrame(np.concatenate(thresholdList),columns=names)
+        #print(threshold_df)
+        return threshold_df
 
     # Get the doubling times of the first day (generally day 2)
     def generateFirstDayDoublingTimes(self):
@@ -34,13 +38,15 @@ class Experiment:
         survivalMatrix = thresholdMatrixDT.apply(Experiment.computeSurvivalValues)
 
         survivalMatrix.drop(survivalMatrix.tail(1).index,inplace=True)
+        #print(survivalMatrix)
         return survivalMatrix
 
     def generateGroupedSurvivalMatrix(self,nameList,dayNameList,ODT):
         # Generate the standard survivalMatrix for each well.
         wellSurvivalMatrix = self.generateWellSurivalMatrix(ODT)
+        #testList = [2,4]
         # Rename the rows with the appropriate days
-        groupedSurvivalMatrix = wellSurvivalMatrix.rename(index= lambda x:  dayNameList[x] )
+        groupedSurvivalMatrix = wellSurvivalMatrix#.rename(index= lambda x:  dayNameList[x] )
         # Rename the columns with the names of the strains
         groupedSurvivalMatrix.columns = nameList
 
@@ -52,7 +58,7 @@ class Experiment:
         # Generate the standard survivalMatrix for each well.
         wellSurvivalMatrix = self.generateWellSurvivalMatrix(ODT)
         # Rename the rows with the appropriate days
-        groupedSurvivalMatrix = wellSurvivalMatrix.rename(index= lambda x:  dayNameList[x] )
+        groupedSurvivalMatrix = wellSurvivalMatrix#.rename(index= lambda x:  dayNameList[x] )
         # Rename the columns with the names of the strains
         groupedSurvivalMatrix.columns = nameList
 
@@ -83,8 +89,21 @@ class Experiment:
 
     @classmethod
     def computeSurvivalValues(cls,thresholdTimes):
+        #print("thresholdTimes: computeSurvivalValues: ", thresholdTimes)
         # Subtracting each timepoint's vector from the initial value
         thresholdDifferences = thresholdTimes[0:len(thresholdTimes)] - thresholdTimes[0]
         doublingTime = thresholdTimes.iloc[-1]
+        '''
+        print("****************************")
+        print("Doubling Time")
+        print(doublingTime)
+        print("*******************************")
+        print("Threshold Diff")
+        print(thresholdDifferences)
+        print("********************************")
+        '''
         survivalVector = (1/ (2**(thresholdDifferences.values/doublingTime))) * 100
+        #print("************************")
+        #print("Survival Vector")
+        #print(survivalVector)
         return survivalVector

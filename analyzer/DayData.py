@@ -55,19 +55,35 @@ class DayData:
             return 100000000
         # Get the points braketing 0.3 OD
         lowerIndex = wellVector.where(wellVector < ODT).idxmax()
+        #print("lower Index: ", lowerIndex)
         upperIndex = wellVector.where(wellVector > ODT).idxmin()
+        #print("upper Index: ", upperIndex)
 
 
         timeRange = timeVector[lowerIndex:upperIndex+1].values
+        #print("timeRange", timeRange)
         odRange = np.log(wellVector[lowerIndex:upperIndex+1].values)
+        #print("odRange: ", odRange)
+        
+        #odRange = abs(odRange)
+        #print("odRange: ", odRange)
 
         odRange = odRange.reshape(-1,1)
+        #print("odRange: ", odRange)
+
+        #print("ODT", ODT)
+        #print("log ODT", np.log(ODT))
+        #ODT = np.array(ODT)
 
         lm = LinearRegression()
         lm.fit(odRange, timeRange)
-        timePrediction = lm.predict(np.log(ODT))
+        
+        # this line of code is dumb but seems to work, Ill run with it
+        timePrediction = lm.predict(np.array([np.log(ODT), np.log(ODT)]).reshape(-1,1))
+        #print(timePrediction)
         timePrediction = timePrediction.transpose()
         return timePrediction
+        
 
     @classmethod
     def calculateDoublingTime(cls, wellVector, timeVector):
