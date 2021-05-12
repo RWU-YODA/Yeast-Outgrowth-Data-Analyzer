@@ -10,7 +10,8 @@ function ExperimentController(strainDataFactory, $scope, $location, expInfoFacto
   $scope.failedAttempt = false;
 
   // Supported machines
-  vm.machines = ["Bioscreen","Epoch"]
+  //vm.machines = ["Bioscreen","Epoch"]
+  vm.machines = ["Bioscreen"]
 
   // Supported calculation types
   vm.replicants = ["Single","Duplicates","Triplicates"]
