@@ -3,17 +3,22 @@
   <h1> Instructions </h1>
   <h3 class= "lead"> Using YODA to analyze and share experimental data </h3>
   <p></p>
-
-  <h4>Database</h4>
-  <p>To view all the strians in the database click the database page, in the table click the strain name to view details</p>
-
-  <h4>About</h4>
-  <p>To get a quick run down of what this data means visit the about page</p>
-
-  <h4>New Experiment</h4>
-  <p>To upload a new stain click the home page then the new experiment button. This will bring you to the new experiment page. On this page enter the information in the top box. Then click the file upload button and upload the necessary files, these files need to be COMMA DELINIATED. enter the remianing information required in the box from top to bottom. THIS IS IMPORTANT TO HAVE IT AUTO FILL DATA FOR YOU!
-    The files need to have a time column, n columns of data and a column labeled blank at the end. the number of columns of data needs to be divisable by the replication.
-
-  </p>
-
+  <p>The YODA tool uses outgrowth curves to calculate relative survivability between experimental strains. For its intended use, the researcher will upload a series of files generated from your plate reader, with each file being the outgrowth data from distinct days. This tool is sensitive to the format in which data is uploaded. Please pay attention to the following format requirements:</p>
+  <ol>
+    <li>Each data file must be uploaded as a comma separated value file (.csv). Each of the files must be labeled as the day of the data collection (e.g., Day2.csv, Day4.csv, etc.)</li>
+    <li>The first column must have the header “Time” and the time values must be in 00:00:00 time format.</li>
+    <li>Each experimental well must receive a unique label in the first row of the spreadsheet using a specific format. The tool requires each data column to be labeled “Well” followed by a sequential number identifier, starting with “101.” (“Well101,” “Well102,” etc.) Note: there is no space between “Well” and the number!</li>
+    <li>The last column of your data file must be a blank empty well, with the header “BLANK.” See the example below for proper data file format.</li>
+  </ol>
+  <img src="/static/img/YODA Figure_Instructions.png" alt="Example data file" width="80%" height="70%"></img>
+  <p>Once the data are in the correct format, running the experiment is easy. At www.yoda.website click the big blue “Run Experiment” button. This brings you to the Launch New Experiment page, where you enter the fields from top to bottom. A few notes about the fields:</p>
+  <ol>
+    <li>The “Days Comma Delimited” field requires the day of the experiment the data was collected. In the example of a life span experiment, where the first time point is taken at two days with subsequent time points at day 4, 6, 9, 11, and 13, enter “2,4,6,9,11,13” in this field (without the quotation marks). For viability calculations, YODA uses your first time point to calculate relative viability at a subsequent time point.</li>
+    <li>Select “Bioscreen” under machine. Currently, the tool only supports this format. Additional machine formats will be supported in the future.</li>
+    <li>Enter the number of replicates assayed for each strain. The tool uses this information to populate the configuration string.</li>
+    <li>The OD Threshold is the optical density at which Δtn is calculated. We use 0.2 or 0.3 to calculate the time-shift.</li>
+    <li>Click on “Choose Files” and upload the data files from which assay time-points were collected. Remember, these data files need to be formatted as above, and should be named “Day2.csv,” “Day4.csv,” etc. </li>
+    <li>Click the blue “Upload” button. You should receive a message indicating that a number of documents were uploaded. Click “OK” in the dialog box. If document formatting is correct, a second dialog box saying “Upload Status: 200: OK” should appear. If you receive an “Upload Status: 500” message, this means that there is some problem with the format of the documents.</li>
+    <li>Click the blue “Analyze” button. YODA takes you to a new screen with viability calculations and mortality curves. Clicking the “Download CSV” button will export the data locally as a .csv file.</li>
+  </ol>
 </section>
