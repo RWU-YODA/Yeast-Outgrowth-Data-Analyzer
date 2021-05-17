@@ -3,7 +3,20 @@
 # YODA Backend: Yeast Outgrowth Data Analyzer web application backend, written in Flask with Flask-RESTful framework
 # and numpy for data analysis.
 
+
+
+#This is a monkey fix for a known issue that awaits to be solved
+# here:  https://github.com/flask-restful/flask-restful/pull/913
+#Remove from this line to....
+import flask.scaffold
+flask.helpers._endpoint_from_view_func = flask.scaffold._endpoint_from_view_func
+# This line, at some point down the line!!
+
+
+
+
 # Importing essential dependencies
+
 from flask import Flask, send_file, request, jsonify
 from flask_restful import Api
 from flask_jwt import JWT, jwt_required
