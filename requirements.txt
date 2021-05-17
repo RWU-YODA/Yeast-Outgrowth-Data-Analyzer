@@ -1,11 +1,12 @@
-Flask
-Flask-RESTful
-Flask-JWT
-Flask-SQLAlchemy
 uwsgi
 pandas
 numpy
 scipy
 sklearn
 scikit-learn
-gunicorn
+requests
+flask
+flask-restful
+flask-jwt
+flask-sqlalchemy
+flask-cors
