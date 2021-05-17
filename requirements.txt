@@ -8,4 +8,4 @@ numpy
 scipy
 sklearn
 scikit-learn
-werkzeug
+gunicorn
