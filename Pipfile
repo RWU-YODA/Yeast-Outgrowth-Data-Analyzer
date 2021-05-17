@@ -16,6 +16,7 @@ pandas = "*"
 scipy = "*"
 sklearn = "*"
 flask-cors = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.8"
